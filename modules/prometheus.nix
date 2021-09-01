@@ -17,5 +17,5 @@
       }
     ];
   };
-  networking.firewall.allowedTCPPorts = [ 9090 ];
+  #networking.firewall.allowedTCPPorts = [ 9090 ];  ## ssl+basicAuth via reverse-proxy only
 }

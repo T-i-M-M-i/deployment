@@ -3,7 +3,8 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/nix.nix
-    ./modules/acme.nix
+    ./modules/dns.nix
+    ./modules/nginx.nix
     ./modules/prometheus.nix
     ./modules/jenkins.nix
   ];
@@ -21,6 +22,7 @@
     htop atop iotop iftop
     file bc
     git
+    bind.dnsutils
   ];
 
   environment.variables = { EDITOR = "vim"; };
