@@ -7,7 +7,7 @@
       "prometheus.timmi.johannesloetzsch.de"
       "jenkins.timmi.johannesloetzsch.de"
       "staging.timmi.johannesloetzsch.de"
-      "client-staging.timmi.johannesloetzsch.de"  ## default
+      "client-staging.timmi.johannesloetzsch.de"
       "server-staging.timmi.johannesloetzsch.de"
     ];
   };
@@ -16,14 +16,10 @@
     enable = true;
     virtualHosts = {
       "test.timmi.johannesloetzsch.de" = {
-        default = true;
         forceSSL = true;
         enableACME = true;
-        locations."/" = {
-          proxyPass = "http://localhost:3000";
-          proxyWebsockets = true;
-          extraConfig = "proxy_pass_header Authorization;";
-        };
+        root = "/var/www";
+        extraConfig = ''autoindex on;'';
       };
       "prometheus.timmi.johannesloetzsch.de" = {
         forceSSL = true;
@@ -43,7 +39,17 @@
           extraConfig = "proxy_pass_header Authorization;";
         };
       };
+      "client-staging.timmi.johannesloetzsch.de" = {
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        locations."/" = {
+          proxyPass = "http://localhost:3000";
+          proxyWebsockets = true;
+          extraConfig = "proxy_pass_header Authorization;";
+        };
+      };
       "server-staging.timmi.johannesloetzsch.de" = {
+        default = true;
         forceSSL = true;
         useACMEHost = "test.timmi.johannesloetzsch.de";
         locations."/" = {
