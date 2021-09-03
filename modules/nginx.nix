@@ -6,7 +6,7 @@
     certs."test.timmi.johannesloetzsch.de".extraDomainNames = [
       "prometheus.timmi.johannesloetzsch.de"
       "jenkins.timmi.johannesloetzsch.de"
-      "staging.timmi.johannesloetzsch.de"
+      #"staging.timmi.johannesloetzsch.de"
       "client-staging.timmi.johannesloetzsch.de"
       "server-staging.timmi.johannesloetzsch.de"
     ];
@@ -40,6 +40,7 @@
         };
       };
       "client-staging.timmi.johannesloetzsch.de" = {
+        #default = true;  ## to use staging.timmi.johannesloetzsch.de, we would need cors settings supporting multiple hosts
         forceSSL = true;
         useACMEHost = "test.timmi.johannesloetzsch.de";
         locations."/" = {
@@ -49,7 +50,6 @@
         };
       };
       "server-staging.timmi.johannesloetzsch.de" = {
-        default = true;
         forceSSL = true;
         useACMEHost = "test.timmi.johannesloetzsch.de";
         locations."/" = {
