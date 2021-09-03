@@ -19,8 +19,10 @@ with dns.lib.combinators; {
 
     ns1 = test;
 
-    prometheus = test;
     jenkins = test;
+
+    prometheus = test;
+    grafana = test;
 
     staging = test;
     client-staging = staging;

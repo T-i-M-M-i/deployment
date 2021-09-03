@@ -5,7 +5,7 @@
     exporters = {
       node = {
         enable = true;
-        enabledCollectors = [ "systemd" ];
+        enabledCollectors = [ "systemd" "meminfo" "filesystem" "filefd" "textfile" ];
       };
     };
     scrapeConfigs = [

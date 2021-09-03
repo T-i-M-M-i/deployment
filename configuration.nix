@@ -6,6 +6,8 @@
     ./modules/dns.nix
     ./modules/nginx.nix
     ./modules/prometheus.nix
+    ./modules/loki.nix
+    ./modules/grafana.nix
     ./modules/jenkins.nix
   ];
 
