@@ -19,6 +19,7 @@ with dns.lib.combinators; {
 
     ns1 = test;
 
+    binarycache = test;
     jenkins = test;
 
     prometheus = test;

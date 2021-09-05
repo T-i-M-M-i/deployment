@@ -4,6 +4,7 @@
     acceptTerms = true;
     email = "timmi_acme@johannesloetzsch.de";
     certs."test.timmi.johannesloetzsch.de".extraDomainNames = [
+      "binarycache.timmi.johannesloetzsch.de"
       "jenkins.timmi.johannesloetzsch.de"
       "prometheus.timmi.johannesloetzsch.de"
       "grafana.timmi.johannesloetzsch.de"
@@ -21,6 +22,16 @@
         enableACME = true;
         root = "/var/www";
         extraConfig = ''autoindex on;'';
+      };
+      "binarycache.timmi.johannesloetzsch.de" = {
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        locations."/".extraConfig = ''
+          proxy_pass http://localhost:${toString config.services.nix-serve.port};
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        '';
       };
       "jenkins.timmi.johannesloetzsch.de" = {
         forceSSL = true;

@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
+
 {
   imports = [
     ./hardware-configuration.nix
     ./modules/nix.nix
     ./modules/dns.nix
     ./modules/nginx.nix
+    ./modules/binarycache.nix
     ./modules/prometheus.nix
     ./modules/loki.nix
     ./modules/grafana.nix
