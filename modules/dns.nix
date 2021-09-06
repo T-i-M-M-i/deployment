@@ -8,7 +8,7 @@ in
     zones = {
       "timmi.johannesloetzsch.de" = {
         master = true;
-        file = util.writeZone "timmi.johannesloetzsch.de" (import ../dns/timmi.johannesloetzsch.de.nix {inherit dns;});
+        file = util.writeZone "timmi.johannesloetzsch.de" (import ./dns/timmi.johannesloetzsch.de.nix {inherit dns;});
       };
     };
   };
