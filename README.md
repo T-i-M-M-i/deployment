@@ -48,7 +48,7 @@ All servers run at hetzner.cloud at datacenter in Falkenstein
 
 ### productive
 
-* host latest build of `productive` branch of timmi (client+server+invoice)
+* host latest build of `master` branch of timmi (client+server+invoice)
   * deployed by hook called from ci, using the buildcache
 * for now, we keep the db at cloud.mongodb.com
   * moving it to the productive server might save $9.30 in future
