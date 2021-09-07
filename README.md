@@ -30,6 +30,15 @@
 
 * ~0,1GB Ram
 
+### Mosquitto
+
+* ~0,006GB Ram
+
+### Elasticsearch
+
+* ~1,5GB Ram
+* ~0,25GB Ram for Kibana
+
 
 ## Servers
 

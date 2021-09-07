@@ -11,6 +11,8 @@
       #"staging.timmi.johannesloetzsch.de"
       "client-staging.timmi.johannesloetzsch.de"
       "server-staging.timmi.johannesloetzsch.de"
+      "kibana.timmi.johannesloetzsch.de"
+      "elasticsearch.timmi.johannesloetzsch.de"
     ];
   };
 
@@ -76,6 +78,23 @@
         locations."/" = {
           proxyPass = "http://localhost:4000";
           extraConfig = "proxy_pass_header Authorization;";
+        };
+      };
+      "kibana.timmi.johannesloetzsch.de" = {
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        basicAuthFile = "/etc/nginx/passwd";
+        locations."/" = {
+          proxyPass = "http://localhost:${toString config.services.kibana.port}";
+          extraConfig = "proxy_pass_header Authorization;";
+        };
+      };
+      "elasticsearch.timmi.johannesloetzsch.de" = {
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        basicAuthFile = "/etc/nginx/passwd";
+        locations."/" = {
+          proxyPass = "http://localhost:${toString config.services.elasticsearch.port}";
         };
       };
     };

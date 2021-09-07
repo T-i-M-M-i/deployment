@@ -9,6 +9,8 @@
     ./modules/binarycache.nix
     ./modules/monitoring.nix
     ./modules/jenkins.nix
+    ./modules/de4l/mqtt.nix
+    ./modules/de4l/kibana.nix
   ];
 
   system.stateVersion = "21.11"; # Did you read the comment?

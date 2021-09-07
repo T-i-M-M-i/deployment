@@ -30,5 +30,10 @@ with dns.lib.combinators; {
     server-staging = staging;
     mongo-staging = staging;
     smtp-staging = staging;
+
+    de4l = test;
+    mqtt = de4l;
+    elasticsearch = de4l;
+    kibana = de4l;
   };
 }
