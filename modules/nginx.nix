@@ -4,15 +4,15 @@
     acceptTerms = true;
     email = "timmi_acme@johannesloetzsch.de";
     certs."test.timmi.johannesloetzsch.de".extraDomainNames = [
+      "prometheus-test.timmi.johannesloetzsch.de"
+      "client-test.timmi.johannesloetzsch.de"
+      "server-test.timmi.johannesloetzsch.de"
+      "invoice-test.timmi.johannesloetzsch.de"
       "binarycache.timmi.johannesloetzsch.de"
       "jenkins.timmi.johannesloetzsch.de"
-      "prometheus.timmi.johannesloetzsch.de"
       "grafana.timmi.johannesloetzsch.de"
-      #"staging.timmi.johannesloetzsch.de"
-      "client-staging.timmi.johannesloetzsch.de"
-      "server-staging.timmi.johannesloetzsch.de"
-      "kibana.timmi.johannesloetzsch.de"
       "elasticsearch.timmi.johannesloetzsch.de"
+      "kibana.timmi.johannesloetzsch.de"
     ];
   };
 
@@ -24,6 +24,40 @@
         enableACME = true;
         root = "/var/www";
         extraConfig = ''autoindex on;'';
+      };
+      "prometheus-test.timmi.johannesloetzsch.de" = {
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        basicAuthFile = "/etc/nginx/passwd";
+        locations."/" = {
+          proxyPass = "http://localhost:9090";
+          extraConfig = "proxy_pass_header Authorization;";
+        };
+      };
+      "client-test.timmi.johannesloetzsch.de" = {
+        #default = true;  ## to use staging.timmi.johannesloetzsch.de, we would need cors settings supporting multiple hosts
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        locations."/" = {
+          proxyPass = "http://localhost:3000";
+          proxyWebsockets = true;
+          extraConfig = "proxy_pass_header Authorization;";
+        };
+      };
+      "server-test.timmi.johannesloetzsch.de" = {
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        locations."/" = {
+          proxyPass = "http://localhost:4000";
+          extraConfig = "proxy_pass_header Authorization;";
+        };
+      };
+      "invoice-test.timmi.johannesloetzsch.de" = {
+        forceSSL = true;
+        useACMEHost = "test.timmi.johannesloetzsch.de";
+        locations."/" = {
+          proxyPass = "http://localhost:2300";
+        };
       };
       "binarycache.timmi.johannesloetzsch.de" = {
         forceSSL = true;
@@ -44,39 +78,12 @@
           extraConfig = "proxy_pass_header Authorization;";
         };
       };
-      "prometheus.timmi.johannesloetzsch.de" = {
-        forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
-        basicAuthFile = "/etc/nginx/passwd";
-        locations."/" = {
-          proxyPass = "http://localhost:9090";
-          extraConfig = "proxy_pass_header Authorization;";
-        };
-      };
       "grafana.timmi.johannesloetzsch.de" = {
         forceSSL = true;
         useACMEHost = "test.timmi.johannesloetzsch.de";
         locations."/" = {
           proxyPass = "http://localhost:2342";
           proxyWebsockets = true;
-          extraConfig = "proxy_pass_header Authorization;";
-        };
-      };
-      "client-staging.timmi.johannesloetzsch.de" = {
-        #default = true;  ## to use staging.timmi.johannesloetzsch.de, we would need cors settings supporting multiple hosts
-        forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
-        locations."/" = {
-          proxyPass = "http://localhost:3000";
-          proxyWebsockets = true;
-          extraConfig = "proxy_pass_header Authorization;";
-        };
-      };
-      "server-staging.timmi.johannesloetzsch.de" = {
-        forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
-        locations."/" = {
-          proxyPass = "http://localhost:4000";
           extraConfig = "proxy_pass_header Authorization;";
         };
       };
