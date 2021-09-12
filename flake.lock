@@ -56,6 +56,27 @@
         "type": "github"
       }
     },
+    "nix-deploy-git": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1631465032,
+        "narHash": "sha256-mZnr8sGgnwBz1+6lh2KwLbjG3Chn8IhyzZXwSIaRaUA=",
+        "owner": "johannesloetzsch",
+        "repo": "nix-deploy-git",
+        "rev": "34ca21cf3f9a24b384cefc409a13b9652d76dd2d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "johannesloetzsch",
+        "ref": "main",
+        "repo": "nix-deploy-git",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1630248577,
@@ -76,6 +97,7 @@
       "inputs": {
         "dns": "dns",
         "home-manager": "home-manager",
+        "nix-deploy-git": "nix-deploy-git",
         "nixpkgs": "nixpkgs"
       }
     }

@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-deploy-git = {
+      url = "github:johannesloetzsch/nix-deploy-git/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, dns }:
+  outputs = { self, nixpkgs, nix-deploy-git, home-manager, dns }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
@@ -28,6 +32,7 @@
         extraArgs = { flake = self; inherit system dns; };
         modules = [
           ./configuration.nix
+          nix-deploy-git.nixosModule
         ];
       };
     };

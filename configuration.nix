@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/nix.nix
+    ./modules/nix-deploy-git.nix
     ./modules/dns.nix
     ./modules/nginx.nix
     ./modules/binarycache.nix
