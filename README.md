@@ -15,8 +15,10 @@
 
 ### Invoice Server
 
-* ~0,5GB Ram
-* ~0,5GB Ram for `tex` process (TODO: confirm)
+* ~0,3GB Ram
+* ~0,25GB Ram for `xetex` process
+
+> Invoice run at CX31 caused a load of 1,4
 
 ### Cypress
 
