@@ -27,7 +27,7 @@
       };
       "prometheus-test.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         basicAuthFile = "/etc/nginx/passwd";
         locations."/" = {
           proxyPass = "http://localhost:9090";
@@ -37,7 +37,7 @@
       "client-test.timmi.johannesloetzsch.de" = {
         #default = true;  ## to use staging.timmi.johannesloetzsch.de, we would need cors settings supporting multiple hosts
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         locations."/" = {
           proxyPass = "http://localhost:3000";
           proxyWebsockets = true;
@@ -46,7 +46,7 @@
       };
       "server-test.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         locations."/" = {
           proxyPass = "http://localhost:4000";
           extraConfig = "proxy_pass_header Authorization;";
@@ -54,14 +54,14 @@
       };
       "invoice-test.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         locations."/" = {
           proxyPass = "http://localhost:2300";
         };
       };
       "binarycache.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         locations."/".extraConfig = ''
           proxy_pass http://localhost:${toString config.services.nix-serve.port};
           proxy_set_header Host $host;
@@ -71,7 +71,7 @@
       };
       "jenkins.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         locations."/" = {
           proxyPass = "http://localhost:8080";
           proxyWebsockets = true;
@@ -80,7 +80,7 @@
       };
       "grafana.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         locations."/" = {
           proxyPass = "http://localhost:2342";
           proxyWebsockets = true;
@@ -89,7 +89,7 @@
       };
       "kibana.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         basicAuthFile = "/etc/nginx/passwd";
         locations."/" = {
           proxyPass = "http://localhost:${toString config.services.kibana.port}";
@@ -98,7 +98,7 @@
       };
       "elasticsearch.timmi.johannesloetzsch.de" = {
         forceSSL = true;
-        useACMEHost = "test.timmi.johannesloetzsch.de";
+        useACMEHost = config.networking.fqdn;
         basicAuthFile = "/etc/nginx/passwd";
         locations."/" = {
           proxyPass = "http://localhost:${toString config.services.elasticsearch.port}";

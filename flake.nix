@@ -28,11 +28,12 @@
       extraArgs = { flake = self; inherit system dns; };
     };
     commonModules = [
-      nix-deploy-git.nixosModule
       ./modules/nix.nix
       ./modules/default.nix
-      ./modules/nix-deploy-git.nix
       ./modules/dns.nix
+      ./modules/monitoring/client.nix
+      nix-deploy-git.nixosModule
+      ./modules/nix-deploy-git.nix
     ];
   in
   {
@@ -40,19 +41,19 @@
  
     nixosConfigurations = {
   
-      timmi-test = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
+      test = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
         modules = commonModules ++ [
           ./hosts/test/configuration.nix
           ./modules/nginx.nix
           ./modules/binarycache.nix
-          ./modules/monitoring.nix
+          ./modules/monitoring/server.nix
           ./modules/jenkins.nix
           ./modules/de4l/mqtt.nix
           ./modules/de4l/kibana.nix
         ];
       });
   
-      timmi-staging = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
+      staging = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
         modules = commonModules ++ [
           ./hosts/staging/configuration.nix
         ];

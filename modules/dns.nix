@@ -3,12 +3,14 @@ let
    util = dns.util.${system};
 in
 {
+  networking.domain = "timmi.johannesloetzsch.de";
+
   services.bind = {
     enable = true;
     zones = {
-      "timmi.johannesloetzsch.de" = {
+      "${config.networking.domain}" = {
         master = true;
-        file = util.writeZone "timmi.johannesloetzsch.de" (import ./dns/timmi.johannesloetzsch.de.nix {inherit dns;});
+        file = util.writeZone "${config.networking.domain}" (import (./dns + "/${config.networking.domain}.nix") {inherit dns;});
       };
     };
   };
