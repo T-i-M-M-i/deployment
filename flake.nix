@@ -21,29 +21,42 @@
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
+    lib = pkgs.lib;
+
+    commonAttrs = {
+      system = "x86_64-linux";
+      extraArgs = { flake = self; inherit system dns; };
+    };
+    commonModules = [
+      nix-deploy-git.nixosModule
+      ./modules/nix.nix
+      ./modules/default.nix
+      ./modules/nix-deploy-git.nix
+      ./modules/dns.nix
+    ];
   in
   {
     legacyPackages.x86_64-linux = pkgs;
  
     nixosConfigurations = {
   
-      timmi-test = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        extraArgs = { flake = self; inherit system dns; };
-        modules = [
+      timmi-test = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
+        modules = commonModules ++ [
           ./hosts/test/configuration.nix
-          nix-deploy-git.nixosModule
+          ./modules/nginx.nix
+          ./modules/binarycache.nix
+          ./modules/monitoring.nix
+          ./modules/jenkins.nix
+          ./modules/de4l/mqtt.nix
+          ./modules/de4l/kibana.nix
         ];
-      };
+      });
   
-      timmi-staging = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        extraArgs = { flake = self; inherit system dns; };
-        modules = [
+      timmi-staging = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
+        modules = commonModules ++ [
           ./hosts/staging/configuration.nix
-          nix-deploy-git.nixosModule
         ];
-      };
+      });
 
     };
   };

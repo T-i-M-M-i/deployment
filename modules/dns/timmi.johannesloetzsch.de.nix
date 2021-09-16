@@ -9,6 +9,7 @@ with dns.lib.combinators; {
 
   NS = [
     "ns1"
+    "ns2"
   ];
 
   A = [ "188.34.177.149" ];
@@ -19,6 +20,7 @@ with dns.lib.combinators; {
     staging = host "49.12.216.49" "2a01:4f8:c010:214f::1";
 
     ns1 = test;
+    ns2 = staging;
 
     binarycache = test;
     jenkins = test;
