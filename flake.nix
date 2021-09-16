@@ -13,7 +13,7 @@
     };
     dns = {
       url = "github:kirelagin/dns.nix";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -31,10 +31,20 @@
         system = "x86_64-linux";
         extraArgs = { flake = self; inherit system dns; };
         modules = [
-          ./configuration.nix
+          ./hosts/test/configuration.nix
           nix-deploy-git.nixosModule
         ];
       };
+  
+      timmi-staging = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        extraArgs = { flake = self; inherit system dns; };
+        modules = [
+          ./hosts/staging/configuration.nix
+          nix-deploy-git.nixosModule
+        ];
+      };
+
     };
   };
 }
