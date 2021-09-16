@@ -25,7 +25,14 @@
 
   networking = {
     useDHCP = false;
-    interfaces.ens3.useDHCP = true;
+    interfaces.ens3 = {
+      useDHCP = true;
+      ipv6.addresses = [ { address = "2a01:4f8:c010:b127::1"; prefixLength = 64; } ];
+    };
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "ens3";
+    };
   };
 
   users.users.root = {
