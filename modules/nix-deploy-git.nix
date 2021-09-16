@@ -11,7 +11,7 @@
 
           cd /etc/nixos
           sudo git remote add deploy /var/lib/deploy/nixos.git
-          sudo git pull
+          sudo git pull deploy master || git reset --hard deploy/master
           sudo nixos-rebuild switch
         '');
       }
