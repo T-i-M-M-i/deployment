@@ -32,6 +32,7 @@
       ./modules/default.nix
       ./modules/dns.nix
       ./modules/monitoring/client.nix
+      ./modules/nginx/timmi.nix
       nix-deploy-git.nixosModule
       ./modules/nix-deploy-git.nix
     ];
@@ -44,7 +45,6 @@
       test = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
         modules = commonModules ++ [
           ./hosts/test/configuration.nix
-          ./modules/nginx.nix
           ./modules/monitoring/server.nix
           ./modules/binarycache/server.nix
           ./modules/jenkins.nix

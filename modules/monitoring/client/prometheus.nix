@@ -1,5 +1,9 @@
 { config, pkgs, nixpkgs, ... }:
 {
+  imports = [
+    ../../nginx/prometheus.nix
+  ];
+
   services.prometheus = {
     enable = true;
     exporters = {

@@ -1,5 +1,9 @@
 { config, pkgs, nixpkgs, ... }:
 {
+  imports = [
+    ./nginx/jenkins.nix
+  ];
+
   services.jenkins = {
     enable = true;
 

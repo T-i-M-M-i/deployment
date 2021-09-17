@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
-
 {
+  imports = [
+    ../nginx/kibana.nix
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   services.elasticsearch = {

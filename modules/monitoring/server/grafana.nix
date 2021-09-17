@@ -1,8 +1,12 @@
 { config, pkgs, nixpkgs, ... }:
 {
+  imports = [
+    ../../nginx/grafana.nix
+  ];
+
   services.grafana = {
     enable = true;
     port = 2342;
-    domain = "grafana.timmi.johannesloetzsch.de";
+    domain = "grafana.${config.networking.domain}";
   };
 }
