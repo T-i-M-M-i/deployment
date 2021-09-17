@@ -45,8 +45,8 @@
         modules = commonModules ++ [
           ./hosts/test/configuration.nix
           ./modules/nginx.nix
-          ./modules/binarycache.nix
           ./modules/monitoring/server.nix
+          ./modules/binarycache/server.nix
           ./modules/jenkins.nix
           ./modules/de4l/mqtt.nix
           ./modules/de4l/kibana.nix
@@ -56,6 +56,7 @@
       staging = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
         modules = commonModules ++ [
           ./hosts/staging/configuration.nix
+          ./modules/binarycache/client.nix
         ];
       });
 
