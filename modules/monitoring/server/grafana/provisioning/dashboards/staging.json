@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "prometheus-staging",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -56,7 +56,7 @@
         "for": "5m",
         "frequency": "1m",
         "handler": 1,
-        "message": "A daemon failed for more than 5min at test server",
+        "message": "A daemon failed for more than 5min at staging server",
         "name": "Systemd Units alert",
         "noDataState": "no_data",
         "notifications": [
@@ -65,7 +65,7 @@
           }
         ]
       },
-      "datasource": null,
+      "datasource": "prometheus-staging",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -169,7 +169,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "prometheus-staging",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -246,7 +246,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "Loki",
+      "datasource": "loki-staging",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -316,7 +316,7 @@
       },
       "targets": [
         {
-          "expr": "rate({host=\"timmi-test\"}[$__interval])",
+          "expr": "rate({host=\"timmi-staging\"}[$__interval])",
           "refId": "A"
         }
       ],
@@ -324,7 +324,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "prometheus-staging",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -368,7 +368,7 @@
               },
               {
                 "color": "red",
-                "value": 500000000
+                "value": 1000000000
               }
             ]
           },
@@ -420,7 +420,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Loki",
+      "datasource": "loki-staging",
       "gridPos": {
         "h": 17,
         "w": 12,
@@ -440,7 +440,7 @@
       },
       "targets": [
         {
-          "expr": "{host=\"timmi-test\"}",
+          "expr": "{host=\"timmi-staging\"}",
           "hide": false,
           "instant": false,
           "range": true,
@@ -451,7 +451,7 @@
       "type": "logs"
     },
     {
-      "datasource": null,
+      "datasource": "prometheus-staging",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -544,7 +544,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "prometheus-staging",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -635,7 +635,7 @@
           {
             "evaluator": {
               "params": [
-                10000000000
+                20000000000
               ],
               "type": "lt"
             },
@@ -660,7 +660,7 @@
         "for": "5m",
         "frequency": "1m",
         "handler": 1,
-        "message": "At test server only 25% of disk space are left",
+        "message": "At staging server only 25% of disk space are left",
         "name": "Diskspace Available alert",
         "noDataState": "no_data",
         "notifications": [
@@ -669,7 +669,7 @@
           }
         ]
       },
-      "datasource": null,
+      "datasource": "prometheus-staging",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -714,7 +714,7 @@
               },
               {
                 "color": "red",
-                "value": 10000000000
+                "value": 20000000000
               }
             ]
           },
@@ -762,7 +762,7 @@
         {
           "colorMode": "critical",
           "op": "lt",
-          "value": 10000000000,
+          "value": 20000000000,
           "visible": true
         }
       ],
@@ -810,13 +810,14 @@
           }
         ]
       },
-      "datasource": null,
+      "datasource": "prometheus-staging",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -909,7 +910,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5m",
+  "refresh": "1m",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [],
@@ -922,7 +923,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "test server",
-  "uid": "XSVSvU4nk",
-  "version": 14
+  "title": "staging",
+  "uid": "XSVSvU4nb",
+  "version": 16
 }
+
