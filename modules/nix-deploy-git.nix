@@ -32,7 +32,8 @@
           unset GIT_DIR
           [ -d /tmp/invoice ] && rm -r /tmp/invoice
           (cd /tmp; git clone /var/lib/deploy/invoice.git -b staging)
-          (cd /tmp/invoice; nix run)
+          cd /tmp/invoice
+          nix develop -c pm2 start pm2.json --only invoice-jar
         '');
       }
 
