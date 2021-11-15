@@ -10,7 +10,7 @@
         hooks = (pkgs.writeScriptBin "post-receive" ''
           #!${pkgs.runtimeShell}
           cd /etc/nixos
-          sudo git remote set-url deploy /var/lib/deploy/nixos.git
+          sudo git remote set-url deploy /var/lib/deploy/nixos.git || sudo git remote add deploy /var/lib/deploy/nixos.git
           sudo git reset --hard deploy/master
           sudo nixos-rebuild switch
         '');

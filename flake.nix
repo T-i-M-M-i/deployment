@@ -37,9 +37,13 @@
       ./modules/nix-deploy-git.nix
     ];
   in
-  {
-    legacyPackages.x86_64-linux = pkgs;
+  rec {
+    legacyPackages.${system} = (lib.mergeAttrs pkgs {
+      timmi-nixos-deploy = import ./tools/deploy.nix { inherit pkgs; };
+    });
  
+    defaultPackage.${system} = legacyPackages.${system}.timmi-nixos-deploy;
+
     nixosConfigurations = {
   
       test = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
