@@ -6,6 +6,15 @@ To deploy configuration changes on all timmi servers, as a developer with a depl
 nix run
 ```
 
+## Update
+
+To update all flakes and redeploy, call:
+
+```shell
+nix flake update
+nix run
+```
+
 ## Bootstrap
 
 To setup a new server:

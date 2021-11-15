@@ -7,17 +7,13 @@
       url = "github:johannesloetzsch/nix-deploy-git/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     dns = {
       url = "github:kirelagin/dns.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nix-deploy-git, home-manager, dns }:
+  outputs = { self, nixpkgs, nix-deploy-git, dns }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
