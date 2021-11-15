@@ -20,9 +20,12 @@
         hooks = (pkgs.writeScriptBin "post-receive" ''
           #!${pkgs.runtimeShell} -x
           unset GIT_DIR
-          [ -d /tmp/pro ] && rm -r /tmp/pro
-          (cd /tmp; git clone /var/lib/deploy/pro.git -b staging)
-          (cd /tmp/pro; nix run)
+          RUN_BASE_DIR="/var/lib/deploy/run"
+          RUN_DIR="$RUN_BASE_DIR/pro"
+          [ -d $RUN_BASE_DIR ] || mkdir -p $RUN_BASE_DIR
+          [ -d $RUN_DIR ] && rm -r $RUN_DIR
+          (cd $RUN_BASE_DIR; git clone /var/lib/deploy/pro.git -b staging)
+          (cd $RUN_DIR; nix run)
         '');
       }
 
@@ -30,10 +33,12 @@
         hooks = (pkgs.writeScriptBin "post-receive" ''
           #!${pkgs.runtimeShell} -x
           unset GIT_DIR
-          [ -d /tmp/invoice ] && rm -r /tmp/invoice
-          (cd /tmp; git clone /var/lib/deploy/invoice.git -b staging)
-          cd /tmp/invoice
-          nix develop -c pm2 start pm2.json --only invoice-jar
+          RUN_BASE_DIR="/var/lib/deploy/run"
+          RUN_DIR="$RUN_BASE_DIR/invoice"
+          [ -d $RUN_BASE_DIR ] || mkdir -p $RUN_BASE_DIR
+          [ -d $RUN_DIR ] && rm -r $RUN_DIR
+          (cd $RUN_BASE_DIR; git clone /var/lib/deploy/invoice.git -b staging)
+          (cd $RUN_DIR; nix develop -c pm2 start pm2.json --only invoice-jar)
         '');
       }
 
