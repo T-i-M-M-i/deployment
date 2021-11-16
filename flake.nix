@@ -48,7 +48,7 @@
           ./modules/monitoring/server.nix
           ./modules/binarycache/server.nix
           ./modules/jenkins.nix
-          ./modules/de4l/mqtt.nix
+          #./modules/de4l/mqtt.nix  ## deprecated
           ./modules/de4l/kibana.nix
         ];
       });
