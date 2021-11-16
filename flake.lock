@@ -43,11 +43,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1631468583,
-        "narHash": "sha256-mfbM0W+p7LF7MtQL/FaR+CnB7n3njkPnko6gMfGW/Do=",
+        "lastModified": 1637044180,
+        "narHash": "sha256-5r3pOGql5wr0PtuOb0rJ0EeorcT3A43tWYRRvnZB0jk=",
         "owner": "johannesloetzsch",
         "repo": "nix-deploy-git",
-        "rev": "296b3075bf472229affe2cd256bc621a499a2515",
+        "rev": "c1c0b1def56009e8647bfe57c555c6bea0fb2b1a",
         "type": "github"
       },
       "original": {
