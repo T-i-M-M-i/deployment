@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-deploy-git = {
       url = "github:johannesloetzsch/nix-deploy-git/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-deploy-git, dns }:
+  outputs = { self, nixpkgs, sops-nix, nix-deploy-git, dns }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
@@ -25,6 +29,8 @@
     };
     commonModules = [
       ./modules/nix.nix
+      sops-nix.nixosModules.sops
+      ./modules/sops.nix
       ./modules/default.nix
       ./modules/dns.nix
       ./modules/monitoring/client.nix

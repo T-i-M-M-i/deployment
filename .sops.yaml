@@ -1,0 +1,11 @@
+keys:
+  - &test 65a746a747179f4bea27c3deb1a4752dd8a8e457
+  - &staging 0b6ec30447eec2fb993afe285a6eececea7eee23
+  - &j03 9EA68B7F21204979645182E4287B083353C3241C
+creation_rules:
+  - path_regex: sops/secrets/.*
+    key_groups:
+    - pgp:
+      - *test
+      - *staging
+      - *j03

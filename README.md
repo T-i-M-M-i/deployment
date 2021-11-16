@@ -28,3 +28,24 @@ To setup a new server:
 ```shell
 nix-shell -p nixUnstable --command "nixos-install --no-root-passwd --flake .#${HOSTNAME}"
 ```
+
+6. setup sops:
+
+6.1. add the new hosts key to sops config
+
+```shell
+nix shell /etc/nixos#ssh-to-pgp --command ssh-to-pgp -i /etc/ssh/ssh_host_rsa_key
+edit .sops.yaml sops/keys/hosts/$HOSTNAME.asc
+```
+
+6.2. add pubkey to the developers keyring
+```shell
+gpg --import sops/keys/hosts/$HOSTNAME.asc
+```
+
+6.3. edit secrets + use them
+
+```shell
+nix shell .#sops --command sops sops/secrets/timmi-env/$HOSTNAME/*
+edit modules/sops.nix
+```
