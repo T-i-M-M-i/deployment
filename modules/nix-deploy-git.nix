@@ -16,6 +16,7 @@
           #!${pkgs.runtimeShell}
           cd /etc/nixos
           sudo git remote set-url deploy /var/lib/deploy/nixos.git || sudo git remote add deploy /var/lib/deploy/nixos.git
+          sudo git fetch deploy
           sudo git reset --hard deploy/master
           sudo nixos-rebuild switch
         '');
