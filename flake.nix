@@ -21,7 +21,7 @@
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
-    lib = pkgs.lib;
+    inherit (pkgs) lib;
 
     commonAttrs = {
       system = "x86_64-linux";

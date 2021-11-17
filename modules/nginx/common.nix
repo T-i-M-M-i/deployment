@@ -1,8 +1,12 @@
 { config, pkgs, nixpkgs, ... }:
 {
+  ## After updating the nixpkgs, the acme-unit failed. It was mitigated by:
+  ## > chmod acme:nginx /var/lib/acme/
+
   security.acme = {
     acceptTerms = true;
     email = "timmi_acme@johannesloetzsch.de";
+    #server = "https://acme-staging-v02.api.letsencrypt.org/directory";
   };
 
   services.nginx = {
