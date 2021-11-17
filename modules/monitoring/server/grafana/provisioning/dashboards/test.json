@@ -243,7 +243,7 @@
         }
       ],
       "title": "Http Server Status",
-      "type": "state-timeline"
+      "type": "stat"
     },
     {
       "datasource": "loki-test",
