@@ -51,11 +51,11 @@
       test = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
         modules = commonModules ++ [
           ./hosts/test/configuration.nix
-          ./modules/monitoring/server.nix
           ./modules/binarycache/server.nix
+          ./modules/monitoring/server.nix
           ./modules/jenkins.nix
-          #./modules/de4l/mqtt.nix  ## deprecated
           ./modules/de4l/kibana.nix
+          #./modules/de4l/mqtt.nix  ## deprecated
         ];
       });
   

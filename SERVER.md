@@ -1,3 +1,13 @@
+## Domain Names
+
+* To reduce complexity, all servers will use the same `networking.domain` defined at `./modules/dns.nix`
+ * The zone is defined in `modules/dns` and should be served by all hosts.
+* Each hosts `networking.hostName` is defined at `./hosts/$HOST/configuration.nix`, depending on its main purpose (test/staging/productive)
+* We try avoid hardcoding url, but use `${config.networking.fqdn}`
+ * For each service, we provide a virtualHost named `"${SERVICE}-${config.networking.fqdn}"` via CNAME
+ * When services should (additional) be public available at another domain (timmi client), this is setup by additional CORS settings
+
+
 ## Services
 
 ### OS + Bind + Nginx + Prometheus + Loki
@@ -83,7 +93,7 @@ All servers run at hetzner.cloud at datacenter in Falkenstein
 >
 > status: setup in progress
 
-### live
+### live (proposal)
 
 * on demand start of arbitrary feature branches
   * setup subdomain per branch in ci
@@ -92,13 +102,10 @@ All servers run at hetzner.cloud at datacenter in Falkenstein
   * oldest instance might be shutdown, to free resources for new instance
 
 > maybe Hetzner CX31 (*8GB Ram*, 2vCPUs, 80GB SSD => 10,49€/month)
->
-> status: to be decided, lower prio
-
 
 ## TODO
 
-### setup staging+prodctive
+### setup prodctive
 
 - [ ] pure timmi build
   - [ ] pro client production build
