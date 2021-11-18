@@ -5,3 +5,21 @@ modules:
     prober: http
     http:
       method: POST
+
+  http_timmi_client_manifest:
+    prober: http
+    http:
+      fail_if_body_not_matches_regexp:
+        - '"name": "TiMMi Transport Pro"'
+
+  http_timmi_server:
+    prober: http
+    http:
+      fail_if_body_not_matches_regexp:
+        - 'graphiql'
+
+  http_timmi_invoice:
+    prober: http
+    http:
+      fail_if_body_not_matches_regexp:
+        - 'Swagger API'
