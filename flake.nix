@@ -65,6 +65,13 @@
           ./modules/binarycache/client.nix
         ];
       });
+ 
+      productive = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
+        modules = commonModules ++ [
+          ./hosts/productive/configuration.nix
+          ./modules/binarycache/client.nix
+        ];
+      });
 
     };
   };
