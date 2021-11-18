@@ -5,6 +5,8 @@
   sops.defaultSopsFile = ../sops/secrets/default.json;
   sops.defaultSopsFormat = "json";
 
+  ## Environments/Configs for Timmi services on each host
+
   sops.secrets."timmi-env-test-timmi" = {
     sopsFile = ../sops/secrets/timmi-env/test/timmi;
     format = "binary";
@@ -43,5 +45,13 @@
   environment.etc."timmi-invoice" = {
     enable = true;
     source = config.sops.secrets."timmi-env-${config.networking.hostName}-timmi-invoice".path;
+  };
+
+  ## Nginx passwd (basic auth used by prometheus+kibana)
+
+  sops.secrets."nginx-passwd" = {
+    sopsFile = ../sops/secrets/nginx-passwd;
+    format = "binary";
+    owner = "nginx";
   };
 }
