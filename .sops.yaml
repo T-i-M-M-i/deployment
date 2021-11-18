@@ -2,6 +2,7 @@ keys:
   - &test 65a746a747179f4bea27c3deb1a4752dd8a8e457
   - &staging 0b6ec30447eec2fb993afe285a6eececea7eee23
   - &j03 9EA68B7F21204979645182E4287B083353C3241C
+  - &winzlieb 3724D87331C207452F1E3FDFC49A5BC961A73EF8
 creation_rules:
   - path_regex: sops/secrets/.*
     key_groups:
@@ -9,3 +10,4 @@ creation_rules:
       - *test
       - *staging
       - *j03
+      - *winzlieb
