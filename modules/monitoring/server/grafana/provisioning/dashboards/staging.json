@@ -19,10 +19,11 @@
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "alert": {
@@ -61,7 +62,7 @@
         "noDataState": "no_data",
         "notifications": [
           {
-            "uid": "DLfQh8V7k"
+            "uid": "DLfQh8V7l"
           }
         ]
       },
@@ -174,29 +175,15 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-RdYlGr"
           },
           "custom": {
             "fillOpacity": 70,
             "lineWidth": 0
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "dark-red",
-                  "index": 1,
-                  "text": "Down"
-                },
-                "200": {
-                  "color": "dark-green",
-                  "index": 0,
-                  "text": "200 OK"
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -221,9 +208,9 @@
       },
       "id": 20,
       "options": {
-        "alignValue": "center",
+        "alignValue": "left",
         "legend": {
-          "displayMode": "hidden",
+          "displayMode": "list",
           "placement": "bottom"
         },
         "mergeValues": true,
@@ -233,20 +220,22 @@
           "mode": "single"
         }
       },
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "probe_http_status_code",
+          "expr": "probe_success{instance=~\"127\\\\.0\\\\.0\\\\.1:.*\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "title": "Http Server Status",
-      "type": "stat"
+      "type": "state-timeline"
     },
     {
-      "datasource": "loki-staging",
+      "datasource": "prometheus-staging",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -277,7 +266,7 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line"
             }
           },
           "mappings": [],
@@ -290,7 +279,7 @@
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 0.05
               }
             ]
           }
@@ -298,16 +287,16 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 12,
         "x": 12,
         "y": 4
       },
-      "id": 16,
+      "id": 22,
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "list",
+          "displayMode": "hidden",
           "placement": "bottom"
         },
         "tooltip": {
@@ -316,11 +305,14 @@
       },
       "targets": [
         {
-          "expr": "rate({host=\"timmi-staging\"}[$__interval])",
+          "exemplar": true,
+          "expr": "probe_duration_seconds{instance=~\"127\\\\.0\\\\.0\\\\.1:.*\"}",
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Log Rate",
+      "title": "HTTP Request Time",
       "type": "timeseries"
     },
     {
@@ -421,34 +413,81 @@
     },
     {
       "datasource": "loki-staging",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 17,
+        "h": 8,
         "w": 12,
         "x": 12,
-        "y": 12
+        "y": 11
       },
-      "id": 14,
+      "id": 16,
       "options": {
-        "dedupStrategy": "none",
-        "enableLogDetails": true,
-        "prettifyLogMessage": false,
-        "showCommonLabels": false,
-        "showLabels": false,
-        "showTime": false,
-        "sortOrder": "Descending",
-        "wrapLogMessage": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
       },
       "targets": [
         {
-          "expr": "{host=\"timmi-staging\"}",
-          "hide": false,
-          "instant": false,
-          "range": true,
+          "expr": "rate({host=\"timmi-staging\"}[$__interval])",
           "refId": "A"
         }
       ],
-      "title": "Logs",
-      "type": "logs"
+      "title": "Log Rate",
+      "type": "timeseries"
     },
     {
       "datasource": "prometheus-staging",
@@ -544,6 +583,37 @@
       "type": "timeseries"
     },
     {
+      "datasource": "loki-staging",
+      "gridPos": {
+        "h": 17,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 14,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "expr": "{host=\"timmi-staging\"}",
+          "hide": false,
+          "instant": false,
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Logs",
+      "type": "logs"
+    },
+    {
       "datasource": "prometheus-staging",
       "fieldConfig": {
         "defaults": {
@@ -626,147 +696,6 @@
         }
       ],
       "title": "Filedescriptors allocated",
-      "type": "timeseries"
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                20000000000
-              ],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "message": "At staging server only 25% of disk space are left",
-        "name": "Diskspace Available alert",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "DLfQh8V7k"
-          }
-        ]
-      },
-      "datasource": "prometheus-staging",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 20000000000
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 29
-      },
-      "id": 8,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "node_filesystem_avail_bytes{mountpoint=\"/\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_filesystem_size_bytes{mountpoint=\"/\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "op": "lt",
-          "value": 20000000000,
-          "visible": true
-        }
-      ],
-      "title": "Diskspace Available",
       "type": "timeseries"
     },
     {
@@ -908,10 +837,151 @@
       ],
       "title": "Network Rx/Tx",
       "type": "timeseries"
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                20000000000
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "At staging server only 25% of disk space are left",
+        "name": "Diskspace Available alert",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "DLfQh8V7k"
+          }
+        ]
+      },
+      "datasource": "prometheus-staging",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 20000000000
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "node_filesystem_avail_bytes{mountpoint=\"/\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "node_filesystem_size_bytes{mountpoint=\"/\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "op": "lt",
+          "value": 20000000000,
+          "visible": true
+        }
+      ],
+      "title": "Diskspace Available",
+      "type": "timeseries"
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 30,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -924,7 +994,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "staging",
-  "uid": "XSVSvU4nb",
-  "version": 16
+  "uid": "sSVSvU4nx",
+  "version": 4
 }
-
