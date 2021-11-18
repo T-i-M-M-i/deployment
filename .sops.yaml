@@ -1,6 +1,7 @@
 keys:
   - &test 65a746a747179f4bea27c3deb1a4752dd8a8e457
   - &staging 0b6ec30447eec2fb993afe285a6eececea7eee23
+  - &productive 58d031d7a96c49cf2456c223d9deec32d5b7bde2
   - &j03 9EA68B7F21204979645182E4287B083353C3241C
   - &winzlieb 3724D87331C207452F1E3FDFC49A5BC961A73EF8
 creation_rules:
@@ -9,5 +10,6 @@ creation_rules:
     - pgp:
       - *test
       - *staging
+      - *productive
       - *j03
       - *winzlieb
