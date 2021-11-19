@@ -62,7 +62,7 @@
         "noDataState": "no_data",
         "notifications": [
           {
-            "uid": "DLfQh8V7l"
+            "uid": "DLfQh8V7k"
           }
         ]
       },
@@ -484,6 +484,11 @@
         {
           "expr": "rate({host=\"timmi-staging\"}[$__interval])",
           "refId": "A"
+        },
+        {
+          "expr": "rate({job=~\"pm2.*\"}[$__interval])",
+          "hide": false,
+          "refId": "B"
         }
       ],
       "title": "Log Rate",
@@ -608,6 +613,11 @@
           "instant": false,
           "range": true,
           "refId": "A"
+        },
+        {
+          "expr": "{job=~\"pm2.*\"}",
+          "hide": false,
+          "refId": "B"
         }
       ],
       "title": "Logs",
@@ -995,5 +1005,5 @@
   "timezone": "",
   "title": "staging",
   "uid": "sSVSvU4nx",
-  "version": 4
+  "version": 10
 }

@@ -484,6 +484,11 @@
         {
           "expr": "rate({host=\"timmi-test\"}[$__interval])",
           "refId": "A"
+        },
+        {
+          "expr": "rate({job=~\"pm2.*\"}[$__interval])",
+          "hide": false,
+          "refId": "B"
         }
       ],
       "title": "Log Rate",
@@ -608,6 +613,11 @@
           "instant": false,
           "range": true,
           "refId": "A"
+        },
+        {
+          "expr": "{job=~\"pm2.*\"}",
+          "hide": false,
+          "refId": "B"
         }
       ],
       "title": "Logs",
@@ -995,5 +1005,5 @@
   "timezone": "",
   "title": "test",
   "uid": "tSVSvU4nx",
-  "version": 4
+  "version": 10
 }
