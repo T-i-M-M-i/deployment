@@ -14,7 +14,7 @@ scrape_configs:
       max_age: 12h
       labels:
         job: systemd-journal
-        host: timmi-test
+      #  host: localhost
     relabel_configs:
       - source_labels: ['__journal__systemd_unit']
         target_label: 'unit'
@@ -26,7 +26,7 @@ scrape_configs:
         labels:
           job: pm2-services
           host: localhost
-          __path__: /var/lib/jenkins/.pm2/logs/*.log
+          __path__: /var/lib/*/.pm2/logs/*.log
   - job_name:  pm2
     static_configs:
       - targets:
@@ -34,4 +34,4 @@ scrape_configs:
         labels:
           job: pm2
           host: localhost
-          __path__: /var/lib/jenkins/.pm2/*.log
+          __path__: /var/lib/*/.pm2/*.log
