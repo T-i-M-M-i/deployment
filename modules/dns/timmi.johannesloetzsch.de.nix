@@ -30,6 +30,7 @@ with dns.lib.combinators; {
     grafana = test;
 
     prometheus-test = test;
+    loki-test = test;
     client-test = test;
     server-test = test;
     mongo-test = test;
@@ -37,11 +38,13 @@ with dns.lib.combinators; {
     invoice-test = test;
 
     prometheus-staging = staging;
+    loki-staging = staging;
     client-staging = staging;
     server-staging = staging;
     invoice-staging = staging;
 
     prometheus-productive = productive;
+    loki-productive = productive;
     client-productive = productive;
     server-productive = productive;
     invoice-productive = productive;

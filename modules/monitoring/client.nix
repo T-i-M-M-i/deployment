@@ -2,6 +2,6 @@
 {
   imports = [
     ./client/prometheus.nix
-    #./client/loki.nix  ## TODO
+    ./client/loki.nix
   ];
 }

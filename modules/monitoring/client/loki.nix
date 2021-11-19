@@ -1,5 +1,8 @@
 { config, pkgs, nixpkgs, ... }:
 {
+  imports = [
+    ../../nginx/loki.nix
+  ];
   services.loki = {
     enable = true;
     configFile = ./loki.yaml;
