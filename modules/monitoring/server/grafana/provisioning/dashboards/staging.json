@@ -482,7 +482,7 @@
       },
       "targets": [
         {
-          "expr": "rate({host=\"timmi-staging\"}[$__interval])",
+          "expr": "rate({job=\"systemd-journal\"}[$__interval])",
           "refId": "A"
         },
         {
@@ -608,7 +608,7 @@
       },
       "targets": [
         {
-          "expr": "{host=\"timmi-staging\"}",
+          "expr": "{job=\"systemd-journal\"}",
           "hide": false,
           "instant": false,
           "range": true,
