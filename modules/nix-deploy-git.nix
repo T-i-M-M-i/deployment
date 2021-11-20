@@ -31,7 +31,7 @@
           RUN_BASE_DIR="/var/lib/deploy/run"
           RUN_DIR="$RUN_BASE_DIR/pro"
           [ -d $RUN_BASE_DIR ] || mkdir -p $RUN_BASE_DIR
-          [ -d $RUN_DIR ] && rm -r $RUN_DIR
+          [ -d $RUN_DIR ] && rm -rf $RUN_DIR
           (cd $RUN_BASE_DIR; git clone /var/lib/deploy/pro.git -b ${config.networking.hostName})
           (cd $RUN_DIR; nix run)
         '');
@@ -44,7 +44,7 @@
           RUN_BASE_DIR="/var/lib/deploy/run"
           RUN_DIR="$RUN_BASE_DIR/invoice"
           [ -d $RUN_BASE_DIR ] || mkdir -p $RUN_BASE_DIR
-          [ -d $RUN_DIR ] && rm -r $RUN_DIR
+          [ -d $RUN_DIR ] && rm -rf $RUN_DIR
           (cd $RUN_BASE_DIR; git clone /var/lib/deploy/invoice.git -b ${config.networking.hostName})
           (cd $RUN_DIR; nix develop -c pm2 start pm2.json --only invoice-jar)
         '');
