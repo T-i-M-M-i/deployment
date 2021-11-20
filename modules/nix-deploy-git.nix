@@ -30,6 +30,7 @@
           unset GIT_DIR
           RUN_BASE_DIR="/var/lib/deploy/run"
           RUN_DIR="$RUN_BASE_DIR/pro"
+          (cd $RUN_DIR; nix run .#stop) || true
           [ -d $RUN_BASE_DIR ] || mkdir -p $RUN_BASE_DIR
           [ -d $RUN_DIR ] && rm -rf $RUN_DIR
           (cd $RUN_BASE_DIR; git clone /var/lib/deploy/pro.git -b ${config.networking.hostName})
@@ -43,6 +44,7 @@
           unset GIT_DIR
           RUN_BASE_DIR="/var/lib/deploy/run"
           RUN_DIR="$RUN_BASE_DIR/invoice"
+          (cd $RUN_DIR; nix run .#stop) || true
           [ -d $RUN_BASE_DIR ] || mkdir -p $RUN_BASE_DIR
           [ -d $RUN_DIR ] && rm -rf $RUN_DIR
           (cd $RUN_BASE_DIR; git clone /var/lib/deploy/invoice.git -b ${config.networking.hostName})
