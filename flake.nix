@@ -70,6 +70,7 @@
         modules = commonModules ++ [
           ./hosts/productive/configuration.nix
           ./modules/binarycache/client.nix
+          ./modules/nginx/timmi-public.nix
         ];
       });
 
