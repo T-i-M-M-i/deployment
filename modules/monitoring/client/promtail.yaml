@@ -35,3 +35,11 @@ scrape_configs:
           job: pm2
           host: localhost
           __path__: /var/lib/*/.pm2/*.log
+  - job_name:  jenkins-build
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: jenkins-build
+          host: localhost
+          __path__: /var/lib/jenkins/jobs/*/builds/*/log
