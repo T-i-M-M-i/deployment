@@ -4,7 +4,7 @@ with dns.lib.combinators; {
   SOA = {
     nameServer = "ns1";
     adminEmail = "admin@timmitransport.de";
-    serial = 2021111800;
+    serial = 2021112100;
   };
 
   NS = [
@@ -13,8 +13,8 @@ with dns.lib.combinators; {
     "ns3"
   ];
 
-  A = [ "188.34.177.149" ];
-  AAAA = [ "2a01:4f8:c010:b127::1" ];
+  #A = [ "157.90.252.51"  ];
+  #AAAA = [ "2a01:4f8:1c17:e405::1" ];
 
   subdomains = rec {
     test = host "188.34.177.149" "2a01:4f8:c010:b127::1";
