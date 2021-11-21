@@ -22,7 +22,6 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 10,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -83,7 +82,7 @@
           "exemplar": true,
           "expr": "probe_success{instance=~\".*timmitransport.*\",job=~\"blackbox_timmi.*\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         },
         {
@@ -91,7 +90,7 @@
           "expr": "probe_success{instance=~\".*productive.*\",job=~\"blackbox_timmi.*\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "B"
         }
       ],
@@ -155,7 +154,7 @@
           "exemplar": true,
           "expr": "probe_success{instance=~\".*staging.*\",job=~\"blackbox_timmi.*\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -219,7 +218,7 @@
           "exemplar": true,
           "expr": "probe_success{instance=~\".*test.*\",job=~\"blackbox_timmi.*\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -234,12 +233,12 @@
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Timmi Service Overview",
   "uid": "26AK4ucnl",
-  "version": 1
+  "version": 4
 }

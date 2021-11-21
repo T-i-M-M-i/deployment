@@ -22,6 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
+  "iteration": 1637471783263,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -75,7 +76,7 @@
           },
           "custom": {
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "hidden",
             "axisSoftMin": -1,
             "barAlignment": 1,
             "drawStyle": "bars",
@@ -121,7 +122,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 4,
         "w": 12,
         "x": 0,
         "y": 0
@@ -166,248 +167,6 @@
         }
       ],
       "title": "Systemd Units",
-      "transformations": [],
-      "type": "timeseries"
-    },
-    {
-      "datasource": "prometheus-test",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-RdYlGr"
-          },
-          "custom": {
-            "fillOpacity": 70,
-            "lineWidth": 0
-          },
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 0
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "id": 20,
-      "options": {
-        "alignValue": "left",
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "mergeValues": true,
-        "rowHeight": 0.9,
-        "showValue": "auto",
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "probe_success{instance=~\"127\\\\.0\\\\.0\\\\.1:.*\"}",
-          "interval": "",
-          "legendFormat": "{{instance}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Http Server Status",
-      "type": "state-timeline"
-    },
-    {
-      "datasource": "prometheus-test",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 0.05
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 4
-      },
-      "id": 22,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "probe_duration_seconds{instance=~\"127\\\\.0\\\\.0\\\\.1:.*\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "HTTP Request Time",
-      "type": "timeseries"
-    },
-    {
-      "datasource": "prometheus-test",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "stepBefore",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 1000000000
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 8
-      },
-      "id": 2,
-      "options": {
-        "legend": {
-          "calcs": [
-            "min",
-            "last"
-          ],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemAvailable_bytes",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_memory_MemTotal_bytes",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
-        }
-      ],
-      "title": "MemAvailable",
       "transformations": [],
       "type": "timeseries"
     },
@@ -467,7 +226,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 0
       },
       "id": 16,
       "options": {
@@ -482,16 +241,286 @@
       },
       "targets": [
         {
-          "expr": "rate({job=\"systemd-journal\"}[$__interval])",
-          "refId": "A"
-        },
-        {
-          "expr": "rate({job=~\"pm2.*\"}[$__interval])",
+          "expr": "rate({$loki_query}[$__interval])",
           "hide": false,
-          "refId": "B"
+          "refId": "A"
         }
       ],
       "title": "Log Rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "prometheus-test",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "id": 20,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "probe_success{instance=~\"127\\\\.0\\\\.0\\\\.1:.*\"}",
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Http Server Status",
+      "type": "state-timeline"
+    },
+    {
+      "datasource": "prometheus-test",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.05
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "repeat": null,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "probe_duration_seconds{instance=~\"127\\\\.0\\\\.0\\\\.1:.*\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "HTTP Request Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "loki-test",
+      "gridPos": {
+        "h": 29,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 14,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "expr": "{$loki_query}",
+          "hide": false,
+          "instant": false,
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Logs",
+      "type": "logs"
+    },
+    {
+      "datasource": "prometheus-test",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1000000000
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "node_memory_MemAvailable_bytes",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "node_memory_MemTotal_bytes",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "title": "MemAvailable",
+      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -551,7 +580,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 20
       },
       "id": 12,
       "options": {
@@ -586,42 +615,6 @@
       ],
       "title": "CPU Load",
       "type": "timeseries"
-    },
-    {
-      "datasource": "loki-test",
-      "gridPos": {
-        "h": 17,
-        "w": 12,
-        "x": 12,
-        "y": 19
-      },
-      "id": 14,
-      "options": {
-        "dedupStrategy": "none",
-        "enableLogDetails": true,
-        "prettifyLogMessage": false,
-        "showCommonLabels": false,
-        "showLabels": false,
-        "showTime": false,
-        "sortOrder": "Descending",
-        "wrapLogMessage": false
-      },
-      "targets": [
-        {
-          "expr": "{job=\"systemd-journal\"}",
-          "hide": false,
-          "instant": false,
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "expr": "{job=~\"pm2.*\"}",
-          "hide": false,
-          "refId": "B"
-        }
-      ],
-      "title": "Logs",
-      "type": "logs"
     },
     {
       "datasource": "prometheus-test",
@@ -679,7 +672,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 28
       },
       "id": 6,
       "options": {
@@ -706,146 +699,6 @@
         }
       ],
       "title": "Filedescriptors allocated",
-      "type": "timeseries"
-    },
-    {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                5000000000000
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "B",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "message": "Test server: 5TB have been transmitted.\n20 TB/month are included in our plan",
-        "name": "Network Rx/Tx alert",
-        "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "DLfQh8V7k"
-          }
-        ]
-      },
-      "datasource": "prometheus-test",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 5000000000000
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 33
-      },
-      "id": 18,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "node_network_receive_bytes_total{device=\"ens3\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "node_network_transmit_bytes_total{device=\"ens3\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "op": "gt",
-          "value": 5000000000000,
-          "visible": true
-        }
-      ],
-      "title": "Network Rx/Tx",
       "type": "timeseries"
     },
     {
@@ -945,7 +798,7 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 12,
+        "x": 0,
         "y": 36
       },
       "id": 8,
@@ -988,6 +841,146 @@
       ],
       "title": "Diskspace Available",
       "type": "timeseries"
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                5000000000000
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "B",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "Test server: 5TB have been transmitted.\n20 TB/month are included in our plan",
+        "name": "Network Rx/Tx alert",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "DLfQh8V7k"
+          }
+        ]
+      },
+      "datasource": "prometheus-test",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 5000000000000
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 37
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "node_network_receive_bytes_total{device=\"ens3\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "node_network_transmit_bytes_total{device=\"ens3\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "op": "gt",
+          "value": 5000000000000,
+          "visible": true
+        }
+      ],
+      "title": "Network Rx/Tx",
+      "type": "timeseries"
     }
   ],
   "refresh": "1m",
@@ -995,7 +988,65 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
+          "value": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Loki Query",
+        "multi": false,
+        "name": "loki_query",
+        "options": [
+          {
+            "selected": true,
+            "text": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
+            "value": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
+          },
+          {
+            "selected": false,
+            "text": "job=~\"pm2.*\"",
+            "value": "job=~\"pm2.*\""
+          },
+          {
+            "selected": false,
+            "text": "job=\"systemd-journal\"",
+            "value": "job=\"systemd-journal\""
+          },
+          {
+            "selected": false,
+            "text": "job=~\"pm2.*|systemd-journal\"",
+            "value": "job=~\"pm2.*|systemd-journal\""
+          },
+          {
+            "selected": false,
+            "text": "job=~\"[a-z].*\"",
+            "value": "job=~\"[a-z].*\""
+          }
+        ],
+        "query": "job=~\"pm2.*\"\\,filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\",\njob=~\"pm2.*\",\njob=\"systemd-journal\",\njob=~\"pm2.*|systemd-journal\",\njob=~\"[a-z].*\"",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "datasource": "loki-test",
+        "description": "",
+        "error": null,
+        "filters": [],
+        "hide": 0,
+        "label": "Loki Additional Filter",
+        "name": "loki_filter",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -1005,5 +1056,5 @@
   "timezone": "",
   "title": "test",
   "uid": "tSVSvU4nx",
-  "version": 10
+  "version": 5
 }
