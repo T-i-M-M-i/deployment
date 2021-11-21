@@ -63,6 +63,7 @@
         modules = commonModules ++ [
           ./hosts/staging/configuration.nix
           ./modules/binarycache/client.nix
+          ./modules/backup.nix
         ];
       });
  
