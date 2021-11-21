@@ -8,6 +8,7 @@
         . /run/secrets/timmi-env-productive-timmi
         cd /root/backup/productive/
         ${pkgs.mongodb-tools}/bin/mongodump --uri $MONGO_URI
+        ${pkgs.coreutils}/bin/du -hs /root/backup*
       '';
     };
     timers.backup-mongodump = {
