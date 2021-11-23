@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1637471783263,
+  "iteration": 1637678028486,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -580,7 +580,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 20
+        "y": 21
       },
       "id": 12,
       "options": {
@@ -599,7 +599,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "node_load15",
+          "expr": "node_load1",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -672,7 +672,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 29
       },
       "id": 6,
       "options": {
@@ -799,7 +799,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 36
+        "y": 37
       },
       "id": 8,
       "options": {
@@ -993,8 +993,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
-          "value": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
+          "text": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
+          "value": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
         },
         "description": null,
         "error": null,
@@ -1006,6 +1006,11 @@
         "options": [
           {
             "selected": true,
+            "text": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
+            "value": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
+          },
+          {
+            "selected": false,
             "text": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
             "value": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
           },
@@ -1021,8 +1026,8 @@
           },
           {
             "selected": false,
-            "text": "job=~\"pm2.*|systemd-journal\"",
-            "value": "job=~\"pm2.*|systemd-journal\""
+            "text": "job=\"jenkins-build\"",
+            "value": "job=\"jenkins-build\""
           },
           {
             "selected": false,
@@ -1030,7 +1035,7 @@
             "value": "job=~\"[a-z].*\""
           }
         ],
-        "query": "job=~\"pm2.*\"\\,filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\",\njob=~\"pm2.*\",\njob=\"systemd-journal\",\njob=~\"pm2.*|systemd-journal\",\njob=~\"[a-z].*\"",
+        "query": "job=~\"pm2.*|jenkins-build\"\\,filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\",\njob=~\"pm2.*\"\\,filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\",\njob=~\"pm2.*\",\njob=\"systemd-journal\",\njob=\"jenkins-build\",\njob=~\"[a-z].*\"",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1056,5 +1061,5 @@
   "timezone": "",
   "title": "test",
   "uid": "tSVSvU4nx",
-  "version": 5
+  "version": 15
 }
