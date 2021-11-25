@@ -6,6 +6,8 @@
 
   services.prometheus = {
     enable = true;
+    retentionTime = "3y";
+
     exporters = {
       node = {
         enable = true;
