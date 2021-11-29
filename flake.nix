@@ -54,7 +54,7 @@
           ./modules/binarycache/server.nix
           ./modules/monitoring/server.nix
           ./modules/jenkins.nix
-          ./modules/de4l/kibana.nix
+          #./modules/de4l/kibana.nix  ## not required at the moment -> save memory
           #./modules/de4l/mqtt.nix  ## deprecated
         ];
       });
