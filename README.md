@@ -49,3 +49,10 @@ gpg --import sops/keys/hosts/$HOSTNAME.asc
 nix shell .#sops --command sops sops/secrets/timmi-env/$HOSTNAME/*
 edit modules/sops.nix
 ```
+
+## Ensure, outgoing SMTP is permitted by your hoster:
+
+```shell
+openssl s_client -connect smtp.1und1.de:587 -starttls smtp
+openssl s_client -connect smtp.1und1.de:465
+```
