@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1637678028486,
+  "iteration": 1638379221725,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -993,8 +993,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
-          "value": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
+          "text": "job=~\"pm2.*|jenkins-build\",filename!~\".*/.pm2/logs/invoice-jar-error.log\",filename!~\".*/.pm2/logs/client-out.log\"",
+          "value": "job=~\"pm2.*|jenkins-build\",filename!~\".*/.pm2/logs/invoice-jar-error.log\",filename!~\".*/.pm2/logs/client-out.log\""
         },
         "description": null,
         "error": null,
@@ -1006,13 +1006,13 @@
         "options": [
           {
             "selected": true,
-            "text": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
-            "value": "job=~\"pm2.*|jenkins-build\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
+            "text": "job=~\"pm2.*|jenkins-build\",filename!~\".*/.pm2/logs/invoice-jar-error.log\",filename!~\".*/.pm2/logs/client-out.log\"",
+            "value": "job=~\"pm2.*|jenkins-build\",filename!~\".*/.pm2/logs/invoice-jar-error.log\",filename!~\".*/.pm2/logs/client-out.log\""
           },
           {
             "selected": false,
-            "text": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\"",
-            "value": "job=~\"pm2.*\",filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\""
+            "text": "job=~\"pm2.*\",filename!~\".*/.pm2/logs/invoice-jar-error.log\",filename!~\".*/.pm2/logs/client-out.log\"",
+            "value": "job=~\"pm2.*\",filename!~\".*/.pm2/logs/invoice-jar-error.log\",filename!~\".*/.pm2/logs/client-out.log\""
           },
           {
             "selected": false,
@@ -1035,7 +1035,7 @@
             "value": "job=~\"[a-z].*\""
           }
         ],
-        "query": "job=~\"pm2.*|jenkins-build\"\\,filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\",\njob=~\"pm2.*\"\\,filename!=\"/var/lib/deploy/.pm2/logs/invoice-jar-error.log\",\njob=~\"pm2.*\",\njob=\"systemd-journal\",\njob=\"jenkins-build\",\njob=~\"[a-z].*\"",
+        "query": "job=~\"pm2.*|jenkins-build\"\\,filename!~\".*/.pm2/logs/invoice-jar-error.log\"\\,filename!~\".*/.pm2/logs/client-out.log\",\njob=~\"pm2.*\"\\,filename!~\".*/.pm2/logs/invoice-jar-error.log\"\\,filename!~\".*/.pm2/logs/client-out.log\",,\njob=~\"pm2.*\",\njob=\"systemd-journal\",\njob=\"jenkins-build\",\njob=~\"[a-z].*\"",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1054,12 +1054,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "staging",
   "uid": "sSVSvU4nx",
-  "version": 15
+  "version": 19
 }
