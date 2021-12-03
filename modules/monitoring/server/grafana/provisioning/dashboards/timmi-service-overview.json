@@ -26,6 +26,138 @@
   "liveNow": false,
   "panels": [
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                4
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "max"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "https://timmitransport.de unreachable",
+        "name": "https://timmitransport.de",
+        "noDataState": "alerting",
+        "notifications": [
+          {
+            "uid": "DLfQh8V7k"
+          }
+        ]
+      },
+      "datasource": "prometheus-test",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "hidden",
+            "barAlignment": 1,
+            "drawStyle": "bars",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 4,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(probe_success{instance=~\"https://timmitransport.de.*|.*productive.*\",job=~\"blackbox_timmi.*\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "op": "lt",
+          "value": 4,
+          "visible": true
+        }
+      ],
+      "title": "Productive Alarm",
+      "type": "timeseries"
+    },
+    {
       "datasource": "prometheus-test",
       "description": "",
       "fieldConfig": {
@@ -60,7 +192,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 3
       },
       "id": 6,
       "options": {
@@ -80,7 +212,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "probe_success{instance=~\".*timmitransport.*\",job=~\"blackbox_timmi.*\"}",
+          "expr": "probe_success{instance=~\"https://timmitransport.de.*\",job=~\"blackbox_timmi.*\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
@@ -132,7 +264,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 11
       },
       "id": 4,
       "options": {
@@ -196,7 +328,7 @@
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 17
       },
       "id": 2,
       "options": {
@@ -240,5 +372,5 @@
   "timezone": "",
   "title": "Timmi Service Overview",
   "uid": "26AK4ucnl",
-  "version": 4
+  "version": 7
 }

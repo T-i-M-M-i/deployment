@@ -48,8 +48,7 @@
         params = { module = [ "http_timmi_client_manifest" ]; };
         static_configs = [{
           targets = [
-            "https://timmitransport.de/manifest.json"  ## at the heroku setup it returns an ssl error caused by missing alternative subject
-            "https://www.timmitransport.de/manifest.json"
+            "https://timmitransport.de/manifest.json"
             "https://client-productive.servers.timmitransport.de/manifest.json"
             "https://client-staging.servers.timmitransport.de/manifest.json"
             "https://client-test.servers.timmitransport.de/manifest.json"
