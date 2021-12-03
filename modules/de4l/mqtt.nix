@@ -2,8 +2,8 @@
 
 {
   ## Test at commandline:
-  ##   mosquitto_sub -L "mqtt://timmiDev:$PASSWORD@mqtt.timmi.johannesloetzsch.de:1883/sensors/timmi/test"  ## warning: silently ignores missing permissions on a topic
-  ##   mosquitto_pub -L "mqtt://timmiUser:$PASSWORD@mqtt.timmi.johannesloetzsch.de:1883/sensors/timmi/test" -m 'hallo'  ## fails when unauthorized
+  ##   mosquitto_sub -L "mqtt://timmiDev:$PASSWORD@mqtt.servers.timmitransport.de:1883/sensors/timmi/test"  ## warning: silently ignores missing permissions on a topic
+  ##   mosquitto_pub -L "mqtt://timmiUser:$PASSWORD@mqtt.servers.timmitransport.de:1883/sensors/timmi/test" -m 'hallo'  ## fails when unauthorized
 
   services.mosquitto = {
     enable = true;

@@ -3,7 +3,7 @@ let
    util = dns.util.${system};
 in
 {
-  networking.domain = "timmi.johannesloetzsch.de";
+  networking.domain = "servers.timmitransport.de";
 
   services.bind = {
     enable = true;
@@ -12,9 +12,9 @@ in
         master = true;
         file = util.writeZone "${config.networking.domain}" (import (./dns + "/${config.networking.domain}.nix") {inherit dns;});
       };
-      "servers.timmitransport.de" = {  ## serving the same zone for another domain is not required, but allows moving there, one the NS records are set for the subdomain
+      "timmi.johannesloetzsch.de" = {  ## not required in future
         master = true;
-        file = util.writeZone "servers.timmitransport.de" (import (./dns + "/${config.networking.domain}.nix") {inherit dns;});
+        file = util.writeZone "timmi.johannesloetzsch.de" (import (./dns + "/${config.networking.domain}.nix") {inherit dns;});
       };
     };
   };

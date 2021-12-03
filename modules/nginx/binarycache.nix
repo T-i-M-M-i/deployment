@@ -6,6 +6,7 @@
 
   security.acme.certs."${config.networking.fqdn}".extraDomainNames = [
     "binarycache.${config.networking.domain}"
+    "binarycache.timmi.johannesloetzsch.de"  ## temporary
   ];
 
   services.nginx.virtualHosts = {

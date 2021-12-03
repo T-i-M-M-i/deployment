@@ -1,9 +1,9 @@
 { pkgs ? import <nixpkgs> {} }:
 
 let
-  TEST="test.timmi.johannesloetzsch.de";
-  STAGING="staging.timmi.johannesloetzsch.de";
-  PRODUCTIVE="productive.timmi.johannesloetzsch.de";
+  TEST="test.servers.timmitransport.de";
+  STAGING="staging.servers.timmitransport.de";
+  PRODUCTIVE="productive.servers.timmitransport.de";
 in
 pkgs.writeScriptBin "timmi-nixos-deploy" ''
   #!${pkgs.runtimeShell}

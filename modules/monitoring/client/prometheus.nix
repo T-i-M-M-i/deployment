@@ -50,9 +50,9 @@
           targets = [
             "https://timmitransport.de/manifest.json"  ## at the heroku setup it returns an ssl error caused by missing alternative subject
             "https://www.timmitransport.de/manifest.json"
-            "https://client-productive.timmi.johannesloetzsch.de/manifest.json"
-            "https://client-staging.timmi.johannesloetzsch.de/manifest.json"
-            "https://client-test.timmi.johannesloetzsch.de/manifest.json"
+            "https://client-productive.servers.timmitransport.de/manifest.json"
+            "https://client-staging.servers.timmitransport.de/manifest.json"
+            "https://client-test.servers.timmitransport.de/manifest.json"
           ];
         }];
         relabel_configs = [
@@ -67,9 +67,9 @@
         params = { module = [ "http_timmi_server" ]; };
         static_configs = [{
           targets = [
-            "https://server-productive.timmi.johannesloetzsch.de"
-            "https://server-staging.timmi.johannesloetzsch.de"
-            "https://server-test.timmi.johannesloetzsch.de"
+            "https://server-productive.servers.timmitransport.de"
+            "https://server-staging.servers.timmitransport.de"
+            "https://server-test.servers.timmitransport.de"
           ];
         }];
         relabel_configs = [
@@ -84,9 +84,9 @@
         params = { module = [ "http_timmi_invoice" ]; };
         static_configs = [{
           targets = [
-            "https://invoice-productive.timmi.johannesloetzsch.de"
-            "https://invoice-staging.timmi.johannesloetzsch.de"
-            "https://invoice-test.timmi.johannesloetzsch.de"
+            "https://invoice-productive.servers.timmitransport.de"
+            "https://invoice-staging.servers.timmitransport.de"
+            "https://invoice-test.servers.timmitransport.de"
           ];
         }];
         relabel_configs = [
