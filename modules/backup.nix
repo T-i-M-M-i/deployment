@@ -14,7 +14,7 @@
     timers.backup-mongodump = {
       wantedBy = [ "timers.target" ];
       partOf = [ "backup-mongodump.service" ];
-      timerConfig.OnCalendar = "*-*-* *:55:00";
+      timerConfig.OnCalendar = "*-*-* 23:30:00";
     };
   };
 
@@ -28,7 +28,7 @@
       passwordFile = "/run/secrets/restic-password";
       repository = "/root/backup-target";
       paths = [ "/root/backup" ];
-      timerConfig.OnCalendar = "hourly";
+      timerConfig.OnCalendar = "*-*-* 00:00:00";
       pruneOpts = [ "--keep-last 10" "--keep-hourly 24" "--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12" "--keep-yearly 100" ];
     };
   };
