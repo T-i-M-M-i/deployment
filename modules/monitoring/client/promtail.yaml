@@ -19,7 +19,7 @@ scrape_configs:
       - source_labels: ['__journal__systemd_unit']
         target_label: 'unit'
 
-  - job_name:  pm2-services
+  - job_name: pm2-services
     static_configs:
       - targets:
           - localhost
@@ -27,7 +27,7 @@ scrape_configs:
           job: pm2-services
           host: localhost
           __path__: /var/lib/*/.pm2/logs/*.log
-  - job_name:  pm2
+  - job_name: pm2
     static_configs:
       - targets:
           - localhost
@@ -35,7 +35,8 @@ scrape_configs:
           job: pm2
           host: localhost
           __path__: /var/lib/*/.pm2/*.log
-  - job_name:  jenkins-build
+
+  - job_name: jenkins-build
     static_configs:
       - targets:
           - localhost
@@ -43,3 +44,18 @@ scrape_configs:
           job: jenkins-build
           host: localhost
           __path__: /var/lib/jenkins/jobs/*/builds/*/log
+
+  - job_name: testjson
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: testjson
+          host: localhost
+          __path__: /tmp/log/*.json
+    pipeline_stages:
+    - json:
+        expressions:
+          output: log
+          loglevel: loglevel
+          timestamp: time
