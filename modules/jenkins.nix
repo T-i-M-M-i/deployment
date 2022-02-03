@@ -40,6 +40,30 @@
             builders = [ { shell = "/run/current-system/sw/bin/nix build"; } ];
           };
         }
+        {
+          job = let url = "git@github.com:T-i-M-M-i/pro.git"; in {
+            name = "timmi-pro";
+            scm = [{ git = {
+              browser-url = "https://github.com/T-i-M-M-i/pro/";
+              url = url;
+              #branches = [ "develop" ];
+              credentials-id = "159daa0c-f1b3-449f-aa78-b6b724020b11";
+            }; }];
+            triggers = [ "github" ];
+            properties = [
+              { github.url = url; }
+            ];
+            wrappers = [
+              { credentials-binding = [
+                  { text = {
+                      variable = "GITHUB_TOKEN";
+                      credential-id = "ef4602c8-14bc-4ba4-9dda-e1e6dadad8c4";
+                  }; }
+              ]; }
+            ];
+            builders = [ { shell = "/run/current-system/sw/bin/nix run .#ci"; } ];
+          };
+        }
       ];
     };
   };
