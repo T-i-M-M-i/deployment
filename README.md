@@ -1,6 +1,20 @@
+This repository contains the completely declarative+reproducible configurations of the servers and services of TiMMi Transport GmbH.
+Most of the service definitions should re reusable with minimal adaptions for completely different projects.
+
+[Our setup](./SERVER.md) contains this services:
+* CI/CD
+* buildcache
+* [monitoring + alerting](./modules/monitoring/README.md)
+* backup
+* dns
+* reverse proxy + acme
+
+Secrets are encrypted with sops.
+
 ## Deploy
 
-To deploy configuration changes on all timmi servers, as a developer with a deploy key, call:
+Once the servers are installed following [the bootstrap instructions](#bootstrap), the roll out of configuration changes on all servers is trivial.
+As a developer with an [authorized key](./modules/hetzner.nix), call:
 
 ```shell
 nix run
