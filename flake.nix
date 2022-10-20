@@ -46,6 +46,11 @@
  
     defaultPackage.${system} = legacyPackages.${system}.timmi-nixos-deploy;
 
+    nixosModules = {
+      default = import ./modules/default.nix;
+      binarycache-client = import ./modules/binarycache/client.nix;
+    };
+
     nixosConfigurations = {
   
       test = nixpkgs.lib.nixosSystem (lib.mergeAttrs commonAttrs {
