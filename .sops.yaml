@@ -4,6 +4,7 @@ keys:
   - &productive 58d031d7a96c49cf2456c223d9deec32d5b7bde2
   - &j03 9EA68B7F21204979645182E4287B083353C3241C
   - &winzlieb 3724D87331C207452F1E3FDFC49A5BC961A73EF8
+  - &francesco AB3D59D7F5B59353
 creation_rules:
   - path_regex: sops/secrets/.*
     key_groups:
@@ -13,3 +14,4 @@ creation_rules:
       - *productive
       - *j03
       - *winzlieb
+      - *francesco
